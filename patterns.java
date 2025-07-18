@@ -88,10 +88,11 @@ public class patterns {
     }
 
     public static void pattern9(int n) {
-        for(int i = 0;i <= 2*n-1; i++){
+        for (int i = 0; i <= 2 * n - 1; i++) {
             int stars = i;
-            if (i>n) stars = (2*n -i);
-            for(int j = 0; j<stars; j++){
+            if (i > n)
+                stars = (2 * n - i);
+            for (int j = 0; j < stars; j++) {
                 System.out.print("* ");
             }
 
@@ -99,13 +100,25 @@ public class patterns {
         }
     }
 
-        public static void main(String[] args) {
+    public static void pattern10(int n){
+        for(int i=1; i<=n; i++){
+            int start = 1;
+            if(i%2 == 0) start = 0;
+            // else start = 1;
+            for(int j=0; j<i; j++){
+                System.out.print(start);
+                start = 1 - start;
+            }
+            System.out.println();
+        }
+    }
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
 
         for (int i = 0; i < t; i++) {
             int n = sc.nextInt();
-            pattern9(n);
+            pattern10(n);
         }
         sc.close();
 
