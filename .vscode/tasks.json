@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile and run Java with I/O (Windows safe)",
+      "type": "shell",
+      "command": "cmd.exe",
+      "args": [
+        "/c",
+        "\"javac \"\"${file}\"\" && java -cp \"\"${fileDirname}\"\" \"\"${fileBasenameNoExtension}\"\" < \"\"${fileDirname}\\input.txt\"\" > \"\"${fileDirname}\\output.txt\"\"\""
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
