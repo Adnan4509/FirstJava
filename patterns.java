@@ -100,12 +100,13 @@ public class patterns {
         }
     }
 
-    public static void pattern10(int n){
-        for(int i=1; i<=n; i++){
+    public static void pattern10(int n) {
+        for (int i = 1; i <= n; i++) {
             int start = 1;
-            if(i%2 == 0) start = 0;
+            if (i % 2 == 0)
+                start = 0;
             // else start = 1;
-            for(int j=0; j<i; j++){
+            for (int j = 0; j < i; j++) {
                 System.out.print(start);
                 start = 1 - start;
             }
@@ -113,30 +114,30 @@ public class patterns {
         }
     }
 
-    public static void pattern11(int n){
-        int space = 2*(n-1);
-        for (int i=1; i<=n; i++){
+    public static void pattern11(int n) {
+        int space = 2 * (n - 1);
+        for (int i = 1; i <= n; i++) {
             // numbers
-                for(int j=1; j<=i; j++){
-                    System.out.print(j);
-                }
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
             // spaces
-                for(int j=1; j<space; j++){
-                    System.out.print(" ");
-                }
+            for (int j = 1; j < space; j++) {
+                System.out.print(" ");
+            }
             // numbers
-                for(int j=i; j>=1; j--){
-                    System.out.print(j);
-                }
-                System.out.println();
-                space -= 2;
+            for (int j = i; j >= 1; j--) {
+                System.out.print(j);
+            }
+            System.out.println();
+            space -= 2;
         }
     }
 
-    public static void pattern12(int n){
+    public static void pattern12(int n) {
         int num = 1;
-        for(int i=1; i<=n; i++){
-            for(int j=1; j<=i; j++){
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
                 System.out.print(num + " ");
                 num = num + 1;
             }
@@ -144,21 +145,33 @@ public class patterns {
         }
     }
 
-    public static void pattern13(int n){
-        for(int i=0; i<=n; i++){
-            for(char j='A'; j< 'A'+i; j++){
+    public static void pattern13(int n) {
+        for (int i = 0; i <= n; i++) {
+            for (char j = 'A'; j < 'A' + i; j++) {
                 System.out.print(j);
             }
             System.out.println();
         }
     }
+
+    public static void pattern14(int n) {
+        for(int i=n; i>=1; i--){
+            for(char j='A';j< 'A'+i; j++){
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
 
         for (int i = 0; i < t; i++) {
             int n = sc.nextInt();
-            pattern13(n);
+            pattern14(n);
         }
         sc.close();
 
