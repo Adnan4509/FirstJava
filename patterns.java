@@ -294,12 +294,12 @@ public class patterns {
 
     public static void pattern22(int n){
         int lmt = 2*n-1;
-        for(int i=0; i <= lmt; i++){
-            for(int j=0; j <= lmt; j++){
+        for(int i=0; i < lmt; i++){
+            for(int j=0; j < lmt; j++){
                 int top = i;
                 int left = j;
-                int right = lmt - j;
-                int btm = lmt - i;
+                int right = lmt -1- j;
+                int btm = lmt -1- i;
                 int half1 = Math.min(top, left);
                 int half2 = Math.min(right, btm);
                 int totalMin = Math.min(half2, half1);
