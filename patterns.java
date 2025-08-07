@@ -248,6 +248,37 @@ public class patterns {
         }
     }
 
+    public static void pattern19A2(int n) {
+        int spaces = 0;
+        int stars = n;
+        for (int i = 1; i < 2 * n; i++) {
+            // stars
+            
+            if (i > n)
+                stars++;
+            else
+                stars--;
+            for (int j = 0; j <= stars; j++) {
+                System.out.print("* ");
+            }
+
+            // spaces
+            for (int j = 0; j < spaces; j++) {
+                System.out.print("  ");
+            }
+            if (i < n)
+                spaces += 2;
+            else
+                spaces -= 2;
+
+            // stars
+            for (int j = 0; j <= stars; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void pattern20(int n) {
         int spaces = 2 * n - 2;
         for (int i = 1; i <= 2 * n - 1; i++) {
@@ -292,29 +323,30 @@ public class patterns {
         }
     }
 
-    public static void pattern22(int n){
-        int lmt = 2*n-1;
-        for(int i=0; i < lmt; i++){
-            for(int j=0; j < lmt; j++){
+    public static void pattern22(int n) {
+        int lmt = 2 * n - 1;
+        for (int i = 0; i < lmt; i++) {
+            for (int j = 0; j < lmt; j++) {
                 int top = i;
                 int left = j;
-                int right = lmt -1- j;
-                int btm = lmt -1- i;
+                int right = lmt - 1 - j;
+                int btm = lmt - 1 - i;
                 int half1 = Math.min(top, left);
                 int half2 = Math.min(right, btm);
                 int totalMin = Math.min(half2, half1);
-                System.out.print(n-totalMin + " ");
+                System.out.print(n - totalMin + " ");
             }
             System.out.println();
         }
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
 
         for (int i = 0; i < t; i++) {
             int n = sc.nextInt();
-            pattern22(n);
+            pattern19A2(n);
         }
         sc.close();
 
