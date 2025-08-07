@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.lang.Math;
 
 public class patterns {
 
@@ -155,31 +156,165 @@ public class patterns {
     }
 
     public static void pattern14(int n) {
-        for(int i=n; i>=1; i--){
-            for(char j='A';j< 'A'+i; j++){
+        for (int i = n; i >= 1; i--) {
+            for (char j = 'A'; j < 'A' + i; j++) {
                 System.out.print(j);
             }
             System.out.println();
         }
     }
 
-    public static void pattern15(int n) {
+    public static void pattern16(int n) {
         for (int i = 0; i < n; i++) {
-            char ch = (char)('A' + i);
-            for (int j=0; j<=i; j++) {
+            char ch = (char) ('A' + i);
+            for (int j = 0; j <= i; j++) {
                 System.out.print(ch);
+            }
+            System.out.println();
+
+        }
+    }
+
+    public static void pattern17(int n) {
+        for (int i = 0; i <= n; i++) {
+
+            // spaces
+            for (int j = 0; j <= n - i - 1; j++) {
+                System.out.print(" ");
+            }
+            // char
+            char ch = 'A';
+
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                System.out.print(ch);
+                if (j < i) {
+                    ch++;
+                } else {
+                    ch--;
+                }
+
+            }
+            // spaces
+            for (int j = 0; j <= n - i - 1; j++) {
+                System.out.print(" ");
             }
             System.out.println();
         }
     }
 
+    public static void pattern18(int n) {
+        for (int i = 0; i < n; i++) {
+            char lmt = (char) ('A' + n - 1);
+            for (char ch = (char) (lmt - i); ch < lmt; ch++) {
+                System.out.print(ch + " ");
+            }
+            System.out.println(lmt);
+        }
+    }
+
+    public static void pattern19(int n) {
+        for (int i = 0; i < n; i++) {
+            // stars
+            for (int j = 0; j < n - i; j++) {
+                System.out.print("* ");
+            }
+            // space
+            for (int j = 0; j < 2 * i; j++) {
+                System.out.print("  ");
+            }
+            // stars
+            for (int j = 0; j < n - i; j++) {
+                System.out.print("* ");
+            }
+
+            System.out.println();
+        }
+        for (int i = 0; i < n; i++) {
+            // stars
+            for (int j = 0; j <= i; j++) {
+                System.out.print("* ");
+            }
+            int space = 2 * n - 2 * i - 2;
+            // space
+            for (int j = 1; j <= space; j++) {
+                System.out.print("  ");
+
+            }
+            // stars
+            for (int j = 0; j <= i; j++) {
+                System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void pattern20(int n) {
+        int spaces = 2 * n - 2;
+        for (int i = 1; i <= 2 * n - 1; i++) {
+            // Stars
+            int stars = i;
+            if (i > n)
+                stars = 2 * n - i;
+            // print stars
+            for (int j = 0; j < stars; j++) {
+                System.out.print("* ");
+            }
+
+            // Spaces
+            for (int j = 0; j < spaces; j++) {
+                System.out.print("  ");
+            }
+            if (i < n)
+                spaces -= 2;
+            else
+                spaces += 2;
+
+            // print stars
+            for (int j = 0; j < stars; j++) {
+                System.out.print("* ");
+            }
+
+            System.out.println();
+
+        }
+    }
+
+    protected static void pattern21(int n) {
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == 1 || i == n || j == 1 || j == n) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void pattern22(int n){
+        int lmt = 2*n-1;
+        for(int i=0; i <= lmt; i++){
+            for(int j=0; j <= lmt; j++){
+                int top = i;
+                int left = j;
+                int right = lmt - j;
+                int btm = lmt - i;
+                int half1 = Math.min(top, left);
+                int half2 = Math.min(right, btm);
+                int totalMin = Math.min(half2, half1);
+                System.out.print(n-totalMin + " ");
+            }
+            System.out.println();
+        }
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
 
         for (int i = 0; i < t; i++) {
             int n = sc.nextInt();
-            pattern15(n);
+            pattern22(n);
         }
         sc.close();
 
