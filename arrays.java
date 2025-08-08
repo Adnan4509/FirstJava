@@ -61,8 +61,16 @@ public class arrays {
     }
 
     public static int secondSmallest(int[] a, int n) {
-        int Ssmallest = a[0];
-
+        int smallest = a[0];
+        int Ssmallest = Integer.MAX_VALUE;
+        for(int i=0; i<n; i++){
+            if(a[i] < smallest){
+                Ssmallest = smallest;
+                smallest = a[i];
+            }else if(a[i] > smallest && a[i] < Ssmallest){
+                Ssmallest = a[i];
+            }
+        }
         return Ssmallest;
     }
 
