@@ -74,6 +74,18 @@ public class arrays {
         return Ssmallest;
     }
 
+    public static boolean checkSort(int[] a, int n) {
+
+        for(int i=1; i<n; i++){
+            if(a[i] >= a[i-1]){
+                
+            }else{
+                return false;
+            }
+        }
+       return true;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -82,10 +94,9 @@ public class arrays {
             arr[i] = sc.nextInt();
         }
         sc.close();
-        int Slargest = problem2opt(arr, n);
-        int Ssmallest = secondSmallest(arr, n);
-        System.out.println(Slargest);
-        System.out.println(Ssmallest);
+        boolean answer = checkSort(arr, n);
+
+        System.out.println(answer);
 
     }
 }
