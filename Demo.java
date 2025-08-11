@@ -1,7 +1,7 @@
 
 public class Demo {
     public static void main(String[] args){
-        int[] a = new int[5];
+        int[] a = {1,2,3,4,5,6,7};
         a[4] = 34;
         for(int i=0; i<a.length; i++){        //for loop to print array element
             System.out.println(a[i]);
