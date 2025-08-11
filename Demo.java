@@ -1,60 +1,43 @@
-
 public class Demo {
+
+    // with multithreading
     public static void main(String[] args) {
-        Dog dog = new Dog("black");
-        dog.speed = 110;
+        long startTime = System.currentTimeMillis();
+        NumberCounter thread1 = new NumberCounter();
+        SumCalculator sumC = new SumCalculator();
+        Thread thread2 = new Thread(sumC);
 
-        System.out.println(dog.speed);
-        System.out.println();
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+            
+        }
+        
+
+        System.out.println("TIME TAKEN: " + (System.currentTimeMillis() - startTime) + "ms");
     }
 }
 
-abstract class Animal {
-    abstract void sayHello();
-
-    abstract void sayBye();
-
-    void sleep() {
-        System.out.println("ghur");
+class NumberCounter extends Thread {
+    public void run(){
+        int count = 1;
+        for (int i = 0; i < 1000; i++) {
+            count++;
+        }
     }
-}
-
-class Dog extends Animal {
-    private String colour;
-    int speed;
-
-    public Dog(String colour){                  //here we are using a constructor to access private value for once
-        this.colour = colour;
-    }
-
-    void sayHello() {
-        System.out.println("woof");
-    }
-
-    void sayBye() {
-        System.out.println("Hoof");
-    }
-}
-
-interface Mobile {
-    static final int batteries = 2;             // we should not be able to use "static" and "final" keywords
-    void makeCall();
-
-
-}
-interface MusicPlayer {
-    void playMusic();
     
 }
 
-class SmartPhone implements Mobile, MusicPlayer {
-
-    public void makeCall() { // cannot declare method without public keyword
-        System.out.println("making call");
-    }
-
-    @Override
-    public void playMusic() {
-        System.out.println( "playing music");
+class SumCalculator implements Runnable{
+    public void run(){
+        int count = 1;
+        for (int i = 0; i < 1000; i++) {
+            count++;
+        }
     }
 }
