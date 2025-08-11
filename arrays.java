@@ -1,5 +1,7 @@
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class arrays {
     public static int problem1Brute(int[] arr, int n) {
@@ -63,11 +65,11 @@ public class arrays {
     public static int secondSmallest(int[] a, int n) {
         int smallest = a[0];
         int Ssmallest = Integer.MAX_VALUE;
-        for(int i=0; i<n; i++){
-            if(a[i] < smallest){
+        for (int i = 0; i < n; i++) {
+            if (a[i] < smallest) {
                 Ssmallest = smallest;
                 smallest = a[i];
-            }else if(a[i] > smallest && a[i] < Ssmallest){
+            } else if (a[i] > smallest && a[i] < Ssmallest) {
                 Ssmallest = a[i];
             }
         }
@@ -76,16 +78,38 @@ public class arrays {
 
     public static boolean checkSort(int[] a, int n) {
 
-        for(int i=1; i<n; i++){
-            if(a[i] >= a[i-1]){
-                
-            }else{
+        for (int i = 1; i < n; i++) {
+            if (a[i] >= a[i - 1]) {
+
+            } else {
                 return false;
             }
         }
-       return true;
+        return true;
     }
 
+    public static int duplicateBrute(int[] a, int n) {
+        Set<Integer> s = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            s.add(a[i]);
+        }
+
+        int uniqueElements = s.size();
+        return uniqueElements;
+    }
+
+    public static int duplicateOpt(int[] a, int n) {
+        int i = 0;
+        for (int j = 0; j < n; j++) {
+            if (a[i] != a[j]) {
+                a[i + 1] = a[j];
+                i++;
+            }
+        }
+        return i + 1;
+    }
+
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -94,7 +118,7 @@ public class arrays {
             arr[i] = sc.nextInt();
         }
         sc.close();
-        boolean answer = checkSort(arr, n);
+        int answer = duplicateOpt(arr, n);
 
         System.out.println(answer);
 
