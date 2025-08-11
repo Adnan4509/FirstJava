@@ -37,13 +37,24 @@ class Dog extends Animal {
 }
 
 interface Mobile {
+    static final int batteries = 2;             // we should not be able to use "static" and "final" keywords
     void makeCall();
 
+
+}
+interface MusicPlayer {
+    void playMusic();
+    
 }
 
-class SmartPhone implements Mobile {
+class SmartPhone implements Mobile, MusicPlayer {
 
     public void makeCall() { // cannot declare method without public keyword
         System.out.println("making call");
+    }
+
+    @Override
+    public void playMusic() {
+        System.out.println( "playing music");
     }
 }
