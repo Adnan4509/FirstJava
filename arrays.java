@@ -109,7 +109,20 @@ public class arrays {
         return i + 1;
     }
 
-    
+    public static void leftRotateBy1Opt(int[] a, int n){
+        int temp = a[0];
+        for (int i = 1; i < n; i++) {
+            a[i-1] = a[i];
+        }
+        a[n-1] = temp;
+        for (int i : a) {
+            System.out.println(i);
+        }
+    }
+
+    public static void leftRotateByDBrute(int[] a, int n){
+
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -118,9 +131,10 @@ public class arrays {
             arr[i] = sc.nextInt();
         }
         sc.close();
-        int answer = duplicateOpt(arr, n);
+        leftRotateByDBrute(arr, n);
 
-        System.out.println(answer);
+
+        // System.out.println(answer);
 
     }
 }
