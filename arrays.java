@@ -120,8 +120,25 @@ public class arrays {
         }
     }
 
-    public static void leftRotateByDBrute(int[] a, int n){
-
+    public static void leftRotateByDBrute(int[] a, int n, int rotation){
+        int d = rotation%n;
+        int[] temp = new int[d];
+        //assigning the d elements to a temporary array
+        for (int i = 0; i < d; i++) {
+            temp[i] = a[i];
+        }
+        // rotating the array
+        for (int i = d; i < n; i++) {
+            a[i-d] = a[i];
+        }
+        // adding the temporary array elements back to main array
+        for (int i = n-d; i < n; i++) {
+            a[i] = temp[i-(n-d)];
+        }
+        // printing array
+        for (int i : a) {
+            System.out.println(i);
+        }
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -130,8 +147,10 @@ public class arrays {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
+
+        int rotation = sc.nextInt();
         sc.close();
-        leftRotateByDBrute(arr, n);
+        leftRotateByDBrute(arr, n, rotation);
 
 
         // System.out.println(answer);
