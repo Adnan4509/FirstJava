@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -136,6 +137,16 @@ public class arrays {
             a[i] = temp[i-(n-d)];
         }
         // printing array
+        for (int i : a) {
+            System.out.println(i);
+        }
+    }
+
+    public static void leftRotateByDOpt(int[] a, int n, int rotation){
+        int d = rotation%n;
+        Collections.reverse(Arrays.asList(a, a[d]));
+        Collections.reverse(Arrays.asList(a[d], a[n-1]));
+        Collections.reverse(Arrays.asList(a));
         for (int i : a) {
             System.out.println(i);
         }
