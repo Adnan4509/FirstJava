@@ -110,31 +110,31 @@ public class arrays {
         return i + 1;
     }
 
-    public static void leftRotateBy1Opt(int[] a, int n){
+    public static void leftRotateBy1Opt(int[] a, int n) {
         int temp = a[0];
         for (int i = 1; i < n; i++) {
-            a[i-1] = a[i];
+            a[i - 1] = a[i];
         }
-        a[n-1] = temp;
+        a[n - 1] = temp;
         for (int i : a) {
             System.out.println(i);
         }
     }
 
-    public static void leftRotateByDBrute(int[] a, int n, int rotation){
-        int d = rotation%n;
+    public static void leftRotateByDBrute(int[] a, int n, int rotation) {
+        int d = rotation % n;
         int[] temp = new int[d];
-        //assigning the d elements to a temporary array
+        // assigning the d elements to a temporary array
         for (int i = 0; i < d; i++) {
             temp[i] = a[i];
         }
         // rotating the array
         for (int i = d; i < n; i++) {
-            a[i-d] = a[i];
+            a[i - d] = a[i];
         }
         // adding the temporary array elements back to main array
-        for (int i = n-d; i < n; i++) {
-            a[i] = temp[i-(n-d)];
+        for (int i = n - d; i < n; i++) {
+            a[i] = temp[i - (n - d)];
         }
         // printing array
         for (int i : a) {
@@ -142,15 +142,35 @@ public class arrays {
         }
     }
 
-    public static void leftRotateByDOpt(int[] a, int n, int rotation){
-        int d = rotation%n;
+    public static void leftRotateByDOpt(int[] a, int n, int rotation) {
+        int d = rotation % n;
         Collections.reverse(Arrays.asList(a, a[d]));
-        Collections.reverse(Arrays.asList(a[d], a[n-1]));
+        Collections.reverse(Arrays.asList(a[d], a[n - 1]));
         Collections.reverse(Arrays.asList(a));
         for (int i : a) {
             System.out.println(i);
         }
     }
+
+    public static void moveZeroesEndBrute(int[] a, int n) {
+        int[] temp = new int[n];
+        int j = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] != 0) {
+                temp[j] = a[i];
+                j++;
+            }
+        }
+        // adding the non negative elements at front
+        for(int i=0; i<temp.length; i++){  // we can also use n insted of temp.length
+            a[i] = temp[i];
+        }
+
+        for(int i=0; i<n; i++){
+            System.out.println(a[i]);
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -159,10 +179,8 @@ public class arrays {
             arr[i] = sc.nextInt();
         }
 
-        int rotation = sc.nextInt();
         sc.close();
-        leftRotateByDBrute(arr, n, rotation);
-
+        moveZeroesEndBrute(arr, n);
 
         // System.out.println(answer);
 
