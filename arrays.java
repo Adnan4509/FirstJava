@@ -162,13 +162,37 @@ public class arrays {
             }
         }
         // adding the non negative elements at front
-        for(int i=0; i<temp.length; i++){  // we can also use n insted of temp.length
+        for (int i = 0; i < temp.length; i++) { // we can also use n insted of temp.length
             a[i] = temp[i];
         }
 
-        for(int i=0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             System.out.println(a[i]);
         }
+    }
+
+    public static int[] moveZeroesEndOpt(int[] a, int n) {
+        // two pointer approach
+        int j = -1;
+        for (int i = 0; i < n; i++) {
+            if (a[i] == 0) {
+                j = i;
+                break;
+            }
+        }
+        // for non zero array the result will be
+        if (j == -1) {
+            return a;
+        }
+        for (int i = j+1; i < n; i++) {
+            if(a[i] != 0){
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+                j++;
+            }
+        }
+        return a;
     }
 
     public static void main(String[] args) {
@@ -180,9 +204,10 @@ public class arrays {
         }
 
         sc.close();
-        moveZeroesEndBrute(arr, n);
+        moveZeroesEndOpt(arr, n);
 
-        // System.out.println(answer);
-
+        for (int i = 0; i < n; i++) {
+            System.out.println(arr[i]);
+        }
     }
 }
